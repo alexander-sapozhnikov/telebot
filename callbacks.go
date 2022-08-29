@@ -80,12 +80,17 @@ type InlineButton struct {
 	// It will be used as a callback endpoint.
 	Unique string `json:"unique,omitempty"`
 
-	Text            string `json:"text"`
-	URL             string `json:"url,omitempty"`
-	Data            string `json:"callback_data,omitempty"`
-	InlineQuery     string `json:"switch_inline_query,omitempty"`
-	InlineQueryChat string `json:"switch_inline_query_current_chat"`
-	Login           *Login `json:"login_url,omitempty"`
+	Text            string     `json:"text"`
+	URL             string     `json:"url,omitempty"`
+	Data            string     `json:"callback_data,omitempty"`
+	InlineQuery     string     `json:"switch_inline_query,omitempty"`
+	InlineQueryChat string     `json:"switch_inline_query_current_chat"`
+	WebAppInfo      WebAppInfo `json:"web_app"`
+	Login           *Login     `json:"login_url,omitempty"`
+}
+
+type WebAppInfo struct {
+	URL string `json:"url"`
 }
 
 // With returns a copy of the button with data.
