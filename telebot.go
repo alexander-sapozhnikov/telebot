@@ -6,6 +6,10 @@
 //
 //	import (
 //		"time"
+//		tele "github.com/alexander-sapozhnikov/telebot.v3"
+//	)
+//	import (
+//		"time"
 //		tele "gopkg.in/telebot.v3"
 //	)
 //
