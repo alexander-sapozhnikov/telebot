@@ -20,7 +20,8 @@ type Update struct {
 	MyChatMember      *ChatMemberUpdate `json:"my_chat_member,omitempty"`
 	ChatMember        *ChatMemberUpdate `json:"chat_member,omitempty"`
 	ChatJoinRequest   *ChatJoinRequest  `json:"chat_join_request,omitempty"`
-}
+
+	SecretToken   string  
 
 // ProcessUpdate processes a single incoming update.
 // A started bot calls this function automatically.
