@@ -1,7 +1,7 @@
 package layout
 
 import (
-	tele "gopkg.in/telebot.v4"
+	tele "github.com/alexander-sapozhnikov/telebot.v4"
 )
 
 // LocaleFunc is the function used to fetch the locale of the recipient.
@@ -12,6 +12,10 @@ type LocaleFunc func(tele.Recipient) string
 //
 // Usage:
 //
+//	b.Use(lt.Middleware("en", func(r tele.Recipient) string {
+//		loc, _ := db.UserLocale(r.Recipient())
+//		return loc
+//	}))
 //	b.Use(lt.Middleware("en", func(r tele.Recipient) string {
 //		loc, _ := db.UserLocale(r.Recipient())
 //		return loc

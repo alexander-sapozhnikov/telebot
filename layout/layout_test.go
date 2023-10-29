@@ -6,9 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stretchr/testify/assert"
-	tele "gopkg.in/telebot.v4"
-)
+	tele "github.com/alexander-sapozhnikov/telebot.v4"
+	"github.com/stretchr/testify/assert")
 
 //go:embed *
 var fsys embed.FS

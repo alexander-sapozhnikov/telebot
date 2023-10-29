@@ -10,8 +10,8 @@ import (
 	"sync"
 	"text/template"
 
+	tele "github.com/alexander-sapozhnikov/telebot.v4"
 	"github.com/goccy/go-yaml"
-	tele "gopkg.in/telebot.v4"
 )
 
 type (
