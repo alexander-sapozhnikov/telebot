@@ -4,7 +4,7 @@ import (
 	"errors"
 	"log"
 
-	tele "github.com/alexander-sapozhnikov/telebot.v3"
+	tele "github.com/alexander-sapozhnikov/telebot"
 )
 
 // AutoRespond returns a middleware that automatically responds

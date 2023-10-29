@@ -6,7 +6,7 @@
 //
 //	import (
 //		"time"
-//		tele "github.com/alexander-sapozhnikov/telebot.v3"
+//		tele "github.com/alexander-sapozhnikov/telebot"
 //	)
 //	import (
 //		"time"

@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"time"
 
-	tele "github.com/alexander-sapozhnikov/telebot.v3"
+	tele "github.com/alexander-sapozhnikov/telebot"
 	"github.com/spf13/viper"
 )
 
