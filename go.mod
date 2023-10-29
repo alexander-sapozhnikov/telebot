@@ -1,4 +1,4 @@
-module github.com/alexander-sapozhnikov/telebot.v3
+module github.com/alexander-sapozhnikov/telebot
 
 go 1.13
 
