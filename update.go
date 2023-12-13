@@ -1,7 +1,6 @@
 package telebot
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -51,7 +50,6 @@ func (b *Bot) ProcessContext(c Context) {
 
 		if m.PinnedMessage != nil {
 			b.handle(OnPinned, c)
-			fmt.Println("return 1")
 			return
 		}
 
@@ -71,8 +69,13 @@ func (b *Bot) ProcessContext(c Context) {
 				// Syntax: "</command>@<bot> <payload>"
 				command, botName := match[0][1], match[0][3]
 
-				if botName != "" && !strings.EqualFold(u.SecretToken, botName) {
-					return
+				if botName != "" {
+					if u.SecretToken != "" && !strings.EqualFold(u.SecretToken, botName) {
+						return
+					}
+					 if u.SecretToken == "" && !strings.EqualFold(b.Me.Username, botName) {
+						return
+					}
 				}
 
 				m.Payload = match[0][5]
