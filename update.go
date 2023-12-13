@@ -56,6 +56,7 @@ func (b *Bot) ProcessContext(c Context) {
 
 		if m.PinnedMessage != nil {
 			b.handle(OnPinned, c)
+			fmt.Println("return 1")
 			return
 		}
 
@@ -67,6 +68,7 @@ func (b *Bot) ProcessContext(c Context) {
 		if m.Text != "" {
 			// Filtering malicious messages
 			if m.Text[0] == '\a' {
+				fmt.Println("return 2")
 				return
 			}
 
@@ -76,17 +78,20 @@ func (b *Bot) ProcessContext(c Context) {
 				command, botName := match[0][1], match[0][3]
 
 				if botName != "" && !strings.EqualFold(b.Me.Username, botName) {
+					fmt.Println("return 3")
 					return
 				}
 
 				m.Payload = match[0][5]
 				if b.handle(command, c) {
+					fmt.Println("return 4")
 					return
 				}
 			}
 
 			// 1:1 satisfaction
 			if b.handle(m.Text, c) {
+				fmt.Println("return 5")
 				return
 			}
 
@@ -95,6 +100,7 @@ func (b *Bot) ProcessContext(c Context) {
 			}
 
 			b.handle(OnText, c)
+			fmt.Println("return 6")
 			return
 		}
 
