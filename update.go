@@ -1,6 +1,9 @@
 package telebot
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 // Update object represents an incoming update.
 type Update struct {
@@ -43,6 +46,7 @@ func (b *Bot) ProcessUpdate(u Update) {
 func (b *Bot) ProcessContext(c Context) {
 	u := c.Update()
 
+	fmt.Printf("Get some: %+v\n %+v", u, c)
 	if u.Message != nil {
 		m := u.Message
 
