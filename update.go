@@ -46,7 +46,11 @@ func (b *Bot) ProcessUpdate(u Update) {
 func (b *Bot) ProcessContext(c Context) {
 	u := c.Update()
 
-	fmt.Printf("Get some: %+v\n %+v", u, c)
+	fmt.Printf("Get some Update: %+v\n", u)
+	fmt.Printf("Get some Context: %+v\n", c)
+	fmt.Printf("Get some Message: %+v\n", u.Message)
+	fmt.Printf("Get some Callback: %+v\n", u.Callback)
+	fmt.Printf("Get some ChatMember: %+v\n", u.ChatMember)
 	if u.Message != nil {
 		m := u.Message
 
