@@ -28,6 +28,8 @@ type Update struct {
 	BusinessMessage         *Message                 `json:"business_message"`
 	EditedBusinessMessage   *Message                 `json:"edited_business_message"`
 	DeletedBusinessMessages *BusinessMessagesDeleted `json:"deleted_business_messages"`
+
+	SecretToken string
 }
 
 // ProcessUpdate processes a single incoming update.
