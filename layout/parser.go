@@ -8,7 +8,7 @@ import (
 	"strings"
 	"text/template"
 
-	tele "github.com/alexander-sapozhnikov/telebot.v4"
+	tele "github.com/alexander-sapozhnikov/telebot"
 	"github.com/goccy/go-yaml"
 	"github.com/spf13/viper"
 )
