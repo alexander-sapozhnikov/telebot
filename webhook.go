@@ -37,12 +37,9 @@ type WebhookEndpoint struct {
 //
 // You can also leave the Listen field empty. In this case it is up to the caller to
 // add the Webhook to a http-mux.
-<<<<<<< HEAD
 //
 // If you want to ignore the automatic setWebhook call, you can set IgnoreSetWebhook to true.
 //
-=======
->>>>>>> 6927a6c (change webhook)
 type Webhook struct {
 	Listen           string   `json:"url"`
 	MaxConnections   int      `json:"max_connections"`
