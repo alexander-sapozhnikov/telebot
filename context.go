@@ -180,9 +180,6 @@ type Context interface {
 
 	// Set saves data in the context.
 	Set(key string, val interface{})
-
-	// Get bot username bot from bot or secret token.
-	GetBotUserName() string
 }
 
 // nativeContext is a native implementation of the Context interface.
