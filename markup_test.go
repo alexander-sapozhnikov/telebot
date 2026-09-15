@@ -62,4 +62,10 @@ func TestOptions(t *testing.T) {
 	data, err := PollQuiz.MarshalJSON()
 	require.NoError(t, err)
 	assert.Equal(t, []byte(`{"type":"quiz"}`), data)
+
+	copyBtn := r.CopyText("Copy", "val").Inline()
+	btnData, err := copyBtn.MarshalJSON()
+	require.NoError(t, err)
+	assert.NotContains(t, string(btnData), "switch_inline_query_current_chat")
+	assert.Contains(t, string(btnData), `"copy_text":{"text":"val"}`)
 }

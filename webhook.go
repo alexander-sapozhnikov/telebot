@@ -39,7 +39,6 @@ type WebhookEndpoint struct {
 // add the Webhook to a http-mux.
 //
 // If you want to ignore the automatic setWebhook call, you can set IgnoreSetWebhook to true.
-//
 type Webhook struct {
 	Listen           string   `json:"url"`
 	MaxConnections   int      `json:"max_connections"`
@@ -135,7 +134,7 @@ func (h *Webhook) Poll(b *Bot, dest chan Update, stop chan struct{}) {
 	h.bot = b
 
 	if h.Listen == "" {
-		h.waitForStop(stop)
+		<-stop
 		return
 	}
 
@@ -145,7 +144,7 @@ func (h *Webhook) Poll(b *Bot, dest chan Update, stop chan struct{}) {
 	}
 
 	go func(stop chan struct{}) {
-		h.waitForStop(stop)
+		<-stop
 		s.Shutdown(context.Background())
 	}(stop)
 
@@ -156,14 +155,14 @@ func (h *Webhook) Poll(b *Bot, dest chan Update, stop chan struct{}) {
 	}
 }
 
-func (h *Webhook) waitForStop(stop chan struct{}) {
-	<-stop
-	close(stop)
-}
-
 // The handler simply reads the update from the body of the requests
 // and writes them to the update channel.
 func (h *Webhook) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	if h.SecretToken != "" && r.Header.Get("X-Telegram-Bot-Api-Secret-Token") != h.SecretToken {
+		h.bot.debug(fmt.Errorf("invalid secret token in request"))
+		return
+	}
+
 	var update Update
 	if err := json.NewDecoder(r.Body).Decode(&update); err != nil {
 		h.bot.debug(fmt.Errorf("cannot decode update: %v", err))
